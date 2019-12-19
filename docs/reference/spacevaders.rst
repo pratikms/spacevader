@@ -1,9 +1,9 @@
-spacevaders
+spacevader
 ===========
 
 .. testsetup::
 
-    from spacevaders import *
+    from spacevader import *
 
-.. automodule:: spacevaders
+.. automodule:: spacevader
     :members:

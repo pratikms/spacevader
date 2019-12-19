@@ -2,6 +2,6 @@
 Usage
 =====
 
-To use spacevaders in a project::
+To use spacevader in a project::
 
-	import spacevaders
+	import spacevader

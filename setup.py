@@ -24,7 +24,7 @@ def read(*names, **kwargs):
 
 
 setup(
-    name='spacevaders',
+    name='spacevader',
     version='0.0.1',
     license='MIT',
     description='A simple space invaders game developed purely in Python',
@@ -34,7 +34,7 @@ setup(
     ),
     author='Pratik Shivaraikar',
     author_email='pratik.shivaraikar@gmail.com',
-    url='https://github.com/pratikms/spacevaders',
+    url='https://github.com/pratikms/spacevader',
     packages=find_packages('src'),
     package_dir={'': 'src'},
     py_modules=[splitext(basename(path))[0] for path in glob('src/*.py')],
@@ -64,9 +64,9 @@ setup(
         'Topic :: Utilities',
     ],
     project_urls={
-        'Documentation': 'https://spacevaders.readthedocs.io/',
-        'Changelog': 'https://spacevaders.readthedocs.io/en/latest/changelog.html',
-        'Issue Tracker': 'https://github.com/pratikms/spacevaders/issues',
+        'Documentation': 'https://spacevader.readthedocs.io/',
+        'Changelog': 'https://spacevader.readthedocs.io/en/latest/changelog.html',
+        'Issue Tracker': 'https://github.com/pratikms/spacevader/issues',
     },
     keywords=[
         # eg: 'keyword1', 'keyword2', 'keyword3',
@@ -82,7 +82,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'spacevaders = spacevaders.cli:main',
+            'spacevader = spacevader.cli:main',
         ]
     },
 )

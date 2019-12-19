@@ -16,7 +16,7 @@ extensions = [
 ]
 source_suffix = '.rst'
 master_doc = 'index'
-project = 'spacevaders'
+project = 'spacevader'
 year = '2019-1'
 author = 'Pratik Shivaraikar'
 copyright = '{0}, {1}'.format(year, author)
@@ -25,8 +25,8 @@ version = release = '0.0.1'
 pygments_style = 'trac'
 templates_path = ['.']
 extlinks = {
-    'issue': ('https://github.com/pratikms/spacevaders/issues/%s', '#'),
-    'pr': ('https://github.com/pratikms/spacevaders/pull/%s', 'PR #'),
+    'issue': ('https://github.com/pratikms/spacevader/issues/%s', '#'),
+    'pr': ('https://github.com/pratikms/spacevader/pull/%s', 'PR #'),
 }
 # on_rtd is whether we are on readthedocs.org
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'

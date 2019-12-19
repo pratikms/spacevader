@@ -1,5 +1,5 @@
 
-from spacevaders.cli import main
+from spacevader.cli import main
 
 
 def test_main():
