@@ -11,6 +11,9 @@ screen = pygame.display.set_mode((800, 600))
 # Set background
 background = pygame.image.load('icons/background-2.jpg')
 
+# Set initial score
+score = 0
+
 # Set title and icon
 pygame.display.set_caption('spacevader')
 # TODO: Check icon visibility in Windows
@@ -25,10 +28,15 @@ player_x_change = 0
 
 # Enemy
 enemy_icon = pygame.image.load('icons/enemy.png')
-enemy_x = random.randint(0, 736)
-enemy_y = random.randint(50, 150)
-enemy_x_change = 5
-enemy_y_change = 40
+enemy_x = []
+enemy_y = []
+enemy_x_change = []
+enemy_y_change = []
+enemy_x.append(random.randint(0, 736))
+enemy_y.append(random.randint(50, 150))
+enemy_x_change.append(5)
+enemy_y_change.append(40)
+
 
 # Bullet
 bullet_icon = pygame.image.load('icons/bullet.png')
@@ -38,10 +46,14 @@ bullet_x_change = 0
 bullet_y_change = 10
 bullet_state = 'READY'
 
-score = 0
-
 def player(x, y):
     screen.blit(player_icon, (x, y))
+
+# def init_enemy():
+#     enemy_x.append(random.randint(0, 736))
+#     enemy_y.append(random.randint(50, 150))
+#     enemy_x_change.append(5)
+#     enemy_y_change.append(40)
 
 def enemy(x, y):
     screen.blit(enemy_icon, (x, y))
@@ -86,14 +98,33 @@ while running:
         player_x = 0
     elif player_x >= 736:
         player_x = 736
+
+    for i in range(score + 1):
+        if len(enemy_x) <= i:
+            enemy_x.append(random.randint(0, 736))
+            enemy_y.append(random.randint(50, 150))
+            enemy_x_change.append(5)
+            enemy_y_change.append(40)
+            
+        enemy_x[i] += enemy_x_change[i]
+        if enemy_x[i] <= 0:
+            enemy_x_change[i] = 4
+            enemy_y[i] += enemy_y_change[i]
+        elif enemy_x[i] >= 736:
+            enemy_x_change[i] = -4
+            enemy_y[i] += enemy_y_change[i]
+
+        # Collsion
+        collision = has_collided(enemy_x[i], enemy_y[i], bullet_x, bullet_y)
+        if collision:
+            bullet_y = 480
+            bullet_state = 'READY'
+            score += 1
+            enemy_x[i] = random.randint(0, 736)
+            enemy_y[i] = random.randint(50, 150)
+
+        enemy(enemy_x[i], enemy_y[i])
         
-    enemy_x += enemy_x_change
-    if enemy_x <= 0:
-        enemy_x_change = 4
-        enemy_y += enemy_y_change
-    elif enemy_x >= 736:
-        enemy_x_change = -4
-        enemy_y += enemy_y_change
 
     # Bullet movement
     if bullet_y <= 0:
@@ -103,15 +134,16 @@ while running:
         fire_bullet(bullet_x, bullet_y)
         bullet_y -= bullet_y_change
 
-    # Collsing
-    collision = has_collided(enemy_x, enemy_y, bullet_x, bullet_y)
-    if collision:
-        bullet_y = 480
-        bullet_state = 'READY'
-        score += 1
-        enemy_x = random.randint(0, 736)
-        enemy_y = random.randint(50, 150)
+    # # Collsion
+    # collision = has_collided(enemy_x, enemy_y, bullet_x, bullet_y)
+    # if collision:
+    #     bullet_y = 480
+    #     bullet_state = 'READY'
+    #     score += 1
+    #     enemy_x = random.randint(0, 736)
+    #     enemy_y = random.randint(50, 150)
 
     player(player_x, player_y)
-    enemy(enemy_x, enemy_y)
+    # for i in range(score + 1):
+        # enemy(enemy_x[i], enemy_y[i])
     pygame.display.update()
