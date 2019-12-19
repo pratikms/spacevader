@@ -1,6 +1,8 @@
-import pygame
 import random
 import math
+
+from pygame import mixer
+import pygame
 
 # Initialize pygame
 pygame.init()
@@ -11,12 +13,18 @@ screen = pygame.display.set_mode((800, 600))
 # Set background
 background = pygame.image.load('icons/background-2.jpg')
 
+# Load background sound
+mixer.music.load('sounds/background.wav')
+mixer.music.play(-1)
+
 # Set the score
 score = 0
 font = pygame.font.Font('freesansbold.ttf', 32)
 
 score_board_x = 760
 score_board_y = 10
+
+game_over_font = pygame.font.Font('freesansbold.ttf', 64)
 
 # Set title and icon
 pygame.display.set_caption('spacevader')
@@ -75,6 +83,10 @@ def has_collided(enemy_x, enemy_y, bullet_x, bullet_y):
     distance = math.sqrt(math.pow(enemy_x - bullet_x, 2) + math.pow(enemy_y - bullet_y, 2))
     return distance < 27
 
+def game_over_text():
+    game_over_text = game_over_font.render('GAME OVER', True, (255, 255, 255))
+    screen.blit(game_over_text, (200, 250))
+
 running = True
 while running:
     
@@ -94,6 +106,8 @@ while running:
             if event.key == pygame.K_RIGHT:
                 player_x_change = 5
             if event.key == pygame.K_SPACE and bullet_state is 'READY':
+                bullet_sound = mixer.Sound('sounds/laser.wav')
+                bullet_sound.play()
                 bullet_x = player_x
                 fire_bullet(bullet_x, bullet_y)
 
@@ -108,12 +122,20 @@ while running:
         player_x = 736
 
     for i in range(score + 1):
+
         if len(enemy_x) <= i:
             enemy_x.append(random.randint(0, 736))
             enemy_y.append(random.randint(50, 150))
             enemy_x_change.append(5)
             enemy_y_change.append(40)
             
+        # Game over condition
+        if enemy_y[i] > 440:
+            for j in range(score + 1):
+                enemy_y[j] = 2000
+            game_over_text()
+            break
+
         enemy_x[i] += enemy_x_change[i]
         if enemy_x[i] <= 0:
             enemy_x_change[i] = 4
@@ -125,6 +147,8 @@ while running:
         # Collsion
         collision = has_collided(enemy_x[i], enemy_y[i], bullet_x, bullet_y)
         if collision:
+            explosion_sound = mixer.Sound('sounds/explosion.wav')
+            explosion_sound.play()
             bullet_y = 480
             bullet_state = 'READY'
             score += 1
