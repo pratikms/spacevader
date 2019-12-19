@@ -11,8 +11,12 @@ screen = pygame.display.set_mode((800, 600))
 # Set background
 background = pygame.image.load('icons/background-2.jpg')
 
-# Set initial score
+# Set the score
 score = 0
+font = pygame.font.Font('freesansbold.ttf', 32)
+
+score_board_x = 760
+score_board_y = 10
 
 # Set title and icon
 pygame.display.set_caption('spacevader')
@@ -32,10 +36,10 @@ enemy_x = []
 enemy_y = []
 enemy_x_change = []
 enemy_y_change = []
-enemy_x.append(random.randint(0, 736))
-enemy_y.append(random.randint(50, 150))
-enemy_x_change.append(5)
-enemy_y_change.append(40)
+# enemy_x.append(random.randint(0, 736))
+# enemy_y.append(random.randint(50, 150))
+# enemy_x_change.append(5)
+# enemy_y_change.append(40)
 
 
 # Bullet
@@ -45,6 +49,10 @@ bullet_y = 480
 bullet_x_change = 0
 bullet_y_change = 10
 bullet_state = 'READY'
+
+def show_score(x, y):
+    score_value = font.render(f'{score}', True, (255, 255, 255))
+    screen.blit(score_value, (x, y))
 
 def player(x, y):
     screen.blit(player_icon, (x, y))
@@ -146,4 +154,5 @@ while running:
     player(player_x, player_y)
     # for i in range(score + 1):
         # enemy(enemy_x[i], enemy_y[i])
+    show_score(score_board_x, score_board_y)
     pygame.display.update()
