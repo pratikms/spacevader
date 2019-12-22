@@ -15,6 +15,7 @@ Why does this file exist, and why not put this in __main__?
   Also see (1) from http://click.pocoo.org/5/setuptools/#setuptools-integration
 """
 import sys
+from spacevader.main import run
 
 
 def main(argv=sys.argv):
@@ -27,5 +28,7 @@ def main(argv=sys.argv):
 
     Does stuff.
     """
+    global main
     print(argv)
+    run()
     return 0

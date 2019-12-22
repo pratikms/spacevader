@@ -25,9 +25,9 @@ def read(*names, **kwargs):
 
 setup(
     name='spacevader',
-    version='0.0.1',
+    version='0.0.2',
     license='MIT',
-    description='A simple space invaders game developed purely in Python',
+    description='A simple space invader game developed purely in Python',
     long_description='%s\n%s' % (
         re.compile('^.. start-badges.*^.. end-badges', re.M | re.S).sub('', read('README.rst')),
         re.sub(':[a-z]+:`~?(.*?)`', r'``\1``', read('CHANGELOG.rst'))
@@ -61,7 +61,7 @@ setup(
         # 'Programming Language :: Python :: Implementation :: IronPython',
         # 'Programming Language :: Python :: Implementation :: Jython',
         # 'Programming Language :: Python :: Implementation :: Stackless',
-        'Topic :: Utilities',
+        'Topic :: Games/Entertainment',
     ],
     project_urls={
         'Documentation': 'https://spacevader.readthedocs.io/',
@@ -70,10 +70,12 @@ setup(
     },
     keywords=[
         # eg: 'keyword1', 'keyword2', 'keyword3',
+        'space', 'invader', 'vader', 'spaceinvader', 'space-invader', 'spacevader', 'space-vader', 'space vader', 'space invader'
     ],
     python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*',
     install_requires=[
         # eg: 'aspectlib==1.1.1', 'six>=1.7',
+        'pygame'
     ],
     extras_require={
         # eg:
