@@ -1,11 +1,8 @@
 import os
-# import sys
 
 import pygame
 
 from entities.constant import Constant
-
-# sys.setrecursionlimit(100000)
 
 pygame.init()
 

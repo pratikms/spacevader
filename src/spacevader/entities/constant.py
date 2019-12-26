@@ -12,3 +12,6 @@ class Constant:
     PLAYER_Y_INITIAL = 480
     PLAYER_X_CHANGE = 0
     PLAYER_X_MOVEMENT_DELTA = 5
+
+    ALIEN_ICON = os.path.dirname(f'{CURR_DIR}/../', 'icons/alien.png')
+    

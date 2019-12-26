@@ -6,6 +6,7 @@ from pygame import mixer
 import pygame
 
 from entities.player import Player
+from entities.alien import Alien
 
 current_dir = os.path.dirname(os.path.realpath(__file__))
 
@@ -40,12 +41,13 @@ pygame.display.set_icon(icon)
 # Player
 player = Player()
 
-# Enemy
-enemy_icon = pygame.image.load(os.path.join(current_dir, 'icons/enemy.png'))
-enemy_x = []
-enemy_y = []
-enemy_x_change = []
-enemy_y_change = []
+# Alien
+aliens = []
+# enemy_icon = pygame.image.load(os.path.join(current_dir, 'icons/enemy.png'))
+# enemy_x = []
+# enemy_y = []
+# enemy_x_change = []
+# enemy_y_change = []
 # enemy_x.append(random.randint(0, 736))
 # enemy_y.append(random.randint(50, 150))
 # enemy_x_change.append(5)
@@ -70,8 +72,8 @@ def show_score(x, y):
 #     enemy_x_change.append(5)
 #     enemy_y_change.append(40)
 
-def enemy(x, y):
-    screen.blit(enemy_icon, (x, y))
+# def enemy(x, y):
+#     screen.blit(enemy_icon, (x, y))
 
 def fire_bullet(x, y):
     global bullet_state
@@ -88,7 +90,8 @@ def game_over_text():
 
 def run():
     global player
-    global enemy_x, enemy_x_change, enemy_y, enemy_y_change
+    global aliens
+    # global enemy_x, enemy_x_change, enemy_y, enemy_y_change
     global bullet_x, bullet_x_change, bullet_y, bullet_y_change, bullet_state
     global score
 
@@ -122,18 +125,24 @@ def run():
 
         for i in range(score + 1):
 
-            if len(enemy_x) <= i:
-                enemy_x.append(random.randint(0, 736))
-                enemy_y.append(random.randint(50, 150))
-                enemy_x_change.append(5)
-                enemy_y_change.append(40)
+            if Alien().id <= i:
+                alien = Alien(x=random.randint(0, 736), y=random.randint(50, 150), x_change=5, y_change=40)
+                aliens[i] = alien
+
+            # if len(enemy_x) <= i:
+            #     enemy_x.append(random.randint(0, 736))
+            #     enemy_y.append(random.randint(50, 150))
+            #     enemy_x_change.append(5)
+            #     enemy_y_change.append(40)
                 
             # Game over condition
-            if enemy_y[i] > 440:
-                for j in range(score + 1):
-                    enemy_y[j] = 2000
-                game_over_text()
+            if alien[i].invaded:
                 break
+            # if enemy_y[i] > 440:
+            #     for j in range(score + 1):
+            #         enemy_y[j] = 2000
+            #     game_over_text()
+            #     break
 
             enemy_x[i] += enemy_x_change[i]
             if enemy_x[i] <= 0:
