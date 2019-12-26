@@ -1,5 +1,6 @@
 import os
 from itertools import count
+import math
 
 import pygame
 
@@ -14,7 +15,7 @@ class Alien:
         self._icon = pygame.image.load(Constant.ALIEN_ICON)
         self._x = x
         self._y = y
-        self._x_change = x_change
+        self.x_change = x_change
         self._y_change = y_change
         self.invaded = False
 
@@ -22,10 +23,34 @@ class Alien:
     def x(self):
         return self._x
 
-    # @x.setter
-    # def x(self, x):
-    #     if x <= Constant.LEFT_BOUNDARY:
-            
+    @x.setter
+    def x(self, x):
+        if x <= Constant.LEFT_BOUNDARY:
+            self.x_change = Constant.ALIEN_X_MOVEMENT_DELTA
+            self._y += self._y_change
+        elif self._x >= Constant.RIGHT_BOUNDARY:
+            self.x_change = Constant.ALIEN_X_MOVEMENT_DELTA * -1
+            self._y += self._y_change
+        self._x = x
+
+    @property
+    def y(self):
+        return self._y
+
+    @y.setter
+    def y(self, y):
+        self._y = y
+        if self._y > Constant.INVADE_BOUNDARY:
+            self.invaded = True
+
+    def game_over(self, screen):
+        game_over_font = pygame.font.Font(Constant.GAME_OVER_FONT_TYPE, Constant.GAME_OVER_FONT_SIZE)
+        game_over_text = game_over_font.render('GAME OVER', True, (255, 255, 255))
+        screen.blit(game_over_text, (Constant.GAME_OVER_X, Constant.GAME_OVER_Y))
+
+    def has_collided(self, bullet_x, bullet_y):
+        distance = math.sqrt(math.pow(self._x - bullet_x, 2) + math.pow(self._y - bullet_y, 2))
+        return distance < Constant.COLLISION_DELTA
 
     def render(self, screen):
         screen.blit(self._icon, (self._x, self._y))
