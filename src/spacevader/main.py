@@ -71,37 +71,37 @@ def run():
 
             if event.type is pygame.KEYDOWN:
                 if event.key in (pygame.K_LEFT, pygame.K_RIGHT):
-                    player.player_x_change = player.get_player_change(event.type, event.key)
+                    player.x_change = player.delta(event.type, event.key)
                 if event.key == pygame.K_SPACE and bullet.state == 'READY':
-                    bullet.x = player.player_x
+                    bullet.x = player.x
                     bullet.fire(sound=True)
 
             if event.type is pygame.KEYUP:
                 if event.key in (pygame.K_LEFT, pygame.K_RIGHT):
-                    player.player_x_change = player.get_player_change(event.type, event.key)
+                    player.x_change = player.delta(event.type, event.key)
 
-        player.player_x += player.player_x_change
+        player.x += player.x_change
 
         for i in range(score + 1):
 
-            alien = Alien(x=random.randint(0, 736), y=random.randint(50, 150), x_change=5, y_change=40)
+            alien = Alien(x=random.randint(0, 736), y=random.randint(50, 150), x_change=random.choice([-5, 5]), y_change=40, screen=screen)
             aliens.append(alien)
-
-            if aliens[i].invaded:
-                for j in range(score + 1):
-                    aliens[j].y = 2000
-                aliens[i].game_over(screen)
-                break
 
             aliens[i].x += aliens[i].x_change
 
-            # Collsion
+            # Collision
             collision = aliens[i].has_collided(bullet)
             if collision:
                 aliens[i].explode(bullet)
                 score += 1
 
-            aliens[i].render(screen)
+            # Invasion
+            if aliens[i].invaded:
+                Alien.dispose(aliens)
+                Alien.game_over(screen)
+                break
+
+            aliens[i].render()
             
 
         # Bullet movement

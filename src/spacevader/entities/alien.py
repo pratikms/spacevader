@@ -11,13 +11,14 @@ class Alien:
 
     _ids = count(0)
 
-    def __init__(self, x=None, y=None, x_change=None, y_change=None):
+    def __init__(self, x=None, y=None, x_change=None, y_change=None, screen=None):
         self.id = next(self._ids)
         self._icon = pygame.image.load(Constant.ALIEN_ICON)
         self._x = x
         self._y = y
         self.x_change = x_change
         self._y_change = y_change
+        self._screen = screen
         self.invaded = False
 
     @property
@@ -44,7 +45,8 @@ class Alien:
         if self._y > Constant.INVADE_BOUNDARY:
             self.invaded = True
 
-    def game_over(self, screen):
+    @classmethod
+    def game_over(cls, screen):
         game_over_font = pygame.font.Font(Constant.GAME_OVER_FONT_TYPE, Constant.GAME_OVER_FONT_SIZE)
         game_over_text = game_over_font.render('GAME OVER', True, (255, 255, 255))
         screen.blit(game_over_text, (Constant.GAME_OVER_X, Constant.GAME_OVER_Y))
@@ -62,5 +64,10 @@ class Alien:
         bullet.y = Constant.BULLET_Y_INITIAL
         bullet.state = 'READY'
 
-    def render(self, screen):
-        screen.blit(self._icon, (self._x, self._y))
+    def render(self):
+        self._screen.blit(self._icon, (self._x, self._y))
+
+    @classmethod
+    def dispose(cls, aliens):
+        for alien in aliens:
+            alien.y = 2000
