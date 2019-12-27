@@ -1,18 +1,18 @@
-import os
-
 import pygame
 
 from entities.constant import Constant
 
-pygame.init()
+# pygame.init()
 
 class Player:
 
-    def __init__(self):
+    def __init__(self, screen=None):
+        # TODO: Refactor variable naming
         self.player_icon = pygame.image.load(Constant.PLAYER_ICON)
         self._player_x = Constant.PLAYER_X_INITIAL
         self.player_y = Constant.PLAYER_Y_INITIAL
         self.player_x_change = Constant.PLAYER_X_CHANGE
+        self._screen = screen
 
     @property
     def player_x(self):
@@ -40,5 +40,5 @@ class Player:
         }
         return movement_switcher[event_type].get(event_key)
 
-    def render(self, screen):
-        screen.blit(self.player_icon, (self.player_x, self.player_y))
+    def render(self):
+        self._screen.blit(self.player_icon, (self.player_x, self.player_y))

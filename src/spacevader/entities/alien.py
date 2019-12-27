@@ -1,7 +1,8 @@
-import os
 from itertools import count
 import math
+import random
 
+from pygame import mixer
 import pygame
 
 from entities.constant import Constant
@@ -25,18 +26,12 @@ class Alien:
 
     @x.setter
     def x(self, x):
-        # print(self.y, self._y_change)
         if x <= Constant.LEFT_BOUNDARY:
             self.x_change = Constant.ALIEN_X_MOVEMENT_DELTA
             self.y += self._y_change
-            # print(self.y, self._y_change)
-        elif self._x >= Constant.RIGHT_BOUNDARY:
-            print(f'x_change: {self.x_change}')
+        elif x >= Constant.RIGHT_BOUNDARY:
             self.x_change = Constant.ALIEN_X_MOVEMENT_DELTA * -1
-            print(f'x_change: {self.x_change}')
             self.y += self._y_change
-            # print(self.y, self._y_change)
-        # print()
         self._x = x
 
     @property
@@ -45,11 +40,7 @@ class Alien:
 
     @y.setter
     def y(self, y):
-        print(self.y, self._y_change)
-        print(f'Setter: {y}')
         self._y = y
-        print(self.y, self._y_change)
-        print()
         if self._y > Constant.INVADE_BOUNDARY:
             self.invaded = True
 
@@ -58,9 +49,18 @@ class Alien:
         game_over_text = game_over_font.render('GAME OVER', True, (255, 255, 255))
         screen.blit(game_over_text, (Constant.GAME_OVER_X, Constant.GAME_OVER_Y))
 
-    def has_collided(self, bullet_x, bullet_y):
-        distance = math.sqrt(math.pow(self._x - bullet_x, 2) + math.pow(self._y - bullet_y, 2))
+    def has_collided(self, bullet):
+        distance = math.sqrt(math.pow(self._x - bullet.x, 2) + math.pow(self._y - bullet.y, 2))
         return distance < Constant.COLLISION_DELTA
+
+    def explode(self, bullet):
+        explosion_sound = mixer.Sound(Constant.EXPLOSION_SOUND)
+        explosion_sound.play()
+        # TODO: Check if this is necessary for NORMAL mode
+        self.x = random.randint(Constant.LEFT_BOUNDARY, Constant.RIGHT_BOUNDARY)
+        self.y = random.randint(Constant.ALIEN_SPAWN_TOP_BOUNDARY, Constant.ALIEN_SPAWN_BOTTOM_BOUNDARY)
+        bullet.y = Constant.BULLET_Y_INITIAL
+        bullet.state = 'READY'
 
     def render(self, screen):
         screen.blit(self._icon, (self._x, self._y))
