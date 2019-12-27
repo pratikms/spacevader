@@ -25,12 +25,18 @@ class Alien:
 
     @x.setter
     def x(self, x):
+        # print(self.y, self._y_change)
         if x <= Constant.LEFT_BOUNDARY:
             self.x_change = Constant.ALIEN_X_MOVEMENT_DELTA
-            self._y += self._y_change
+            self.y += self._y_change
+            # print(self.y, self._y_change)
         elif self._x >= Constant.RIGHT_BOUNDARY:
+            print(f'x_change: {self.x_change}')
             self.x_change = Constant.ALIEN_X_MOVEMENT_DELTA * -1
-            self._y += self._y_change
+            print(f'x_change: {self.x_change}')
+            self.y += self._y_change
+            # print(self.y, self._y_change)
+        # print()
         self._x = x
 
     @property
@@ -39,7 +45,11 @@ class Alien:
 
     @y.setter
     def y(self, y):
+        print(self.y, self._y_change)
+        print(f'Setter: {y}')
         self._y = y
+        print(self.y, self._y_change)
+        print()
         if self._y > Constant.INVADE_BOUNDARY:
             self.invaded = True
 

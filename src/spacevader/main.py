@@ -125,13 +125,22 @@ def run():
 
         for i in range(score + 1):
 
-            print(Alien().id, i)
-            if Alien().id <= i:
-                alien = Alien(x=random.randint(0, 736), y=random.randint(50, 150), x_change=5, y_change=40)
-                # aliens[i] = alien
-                aliens.append(alien)
-                print('in here')
-                print(aliens)
+            # print(Alien().id, i)
+            # print(type(Alien().id), type(i))
+            # alien_id = Alien().id
+            # print(Alien().id > i)
+            # if Alien().id <= i:
+            # if True:
+            #     alien = Alien(x=random.randint(0, 736), y=random.randint(50, 150), x_change=5, y_change=40)
+            #     # aliens[i] = alien
+            #     aliens.append(alien)
+            #     print('in here')
+            #     print(aliens)
+            alien = Alien(x=random.randint(0, 736), y=random.randint(50, 150), x_change=5, y_change=40)
+            # aliens[i] = alien
+            aliens.append(alien)
+            # print('in here')
+            # print(aliens)            
 
             # if len(enemy_x) <= i:
             #     enemy_x.append(random.randint(0, 736))
@@ -140,12 +149,12 @@ def run():
             #     enemy_y_change.append(40)
                 
             # Game over condition
-            print(aliens)
-            print(i)
+            # print(aliens)
+            # print(i)
             if aliens[i].invaded:
-                for j in range(score + 1):
-                    aliens[j].y = 2000
-                aliens[i].game_over()
+                # for j in range(score + 1):
+                #     aliens[j].y = 2000
+                aliens[i].game_over(screen)
                 break
             # if enemy_y[i] > 440:
             #     for j in range(score + 1):

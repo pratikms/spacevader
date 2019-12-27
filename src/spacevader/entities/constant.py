@@ -20,7 +20,7 @@ class Constant:
     COLLISION_DELTA = 27
 
     GAME_OVER_FONT_TYPE = 'freesansbold.ttf'
-    GAME_OVER_FONT_SIZE = 32
+    GAME_OVER_FONT_SIZE = 64
     GAME_OVER_X = 200
     GAME_OVER_Y = 250
     
