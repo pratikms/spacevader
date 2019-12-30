@@ -1,6 +1,6 @@
 import pygame
 
-from entities.constant import Constant
+from spacevader.entities.constant import Constant
 
 # pygame.init()
 

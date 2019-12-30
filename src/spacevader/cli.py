@@ -28,7 +28,7 @@ def main(argv=sys.argv):
 
     Does stuff.
     """
-    global main
+    # global main
     print(argv)
     run()
     return 0

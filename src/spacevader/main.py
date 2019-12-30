@@ -5,9 +5,9 @@ import os
 from pygame import mixer
 import pygame
 
-from entities.player import Player
-from entities.alien import Alien
-from entities.bullet import Bullet
+from spacevader.entities.player import Player
+from spacevader.entities.alien import Alien
+from spacevader.entities.bullet import Bullet
 
 current_dir = os.path.dirname(os.path.realpath(__file__))
 

@@ -1,7 +1,7 @@
 from pygame import mixer
 import pygame
 
-from entities.constant import Constant
+from spacevader.entities.constant import Constant
 
 class Bullet:
 
