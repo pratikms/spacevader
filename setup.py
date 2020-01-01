@@ -25,7 +25,7 @@ def read(*names, **kwargs):
 
 setup(
     name='spacevader',
-    version='0.0.2',
+    version='0.0.3',
     license='MIT',
     description='A simple space invader game developed purely in Python',
     long_description='%s\n%s' % (

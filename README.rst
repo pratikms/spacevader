@@ -51,9 +51,9 @@ Overview
     :alt: Supported implementations
     :target: https://pypi.org/project/spacevader
 
-.. |commits-since| image:: https://img.shields.io/github/commits-since/pratikms/spacevader/v0.0.2.svg
+.. |commits-since| image:: https://img.shields.io/github/commits-since/pratikms/spacevader/v0.0.3.svg
     :alt: Commits since latest release
-    :target: https://github.com/pratikms/spacevader/compare/v0.0.2...master
+    :target: https://github.com/pratikms/spacevader/compare/v0.0.3...master
 
 
 
@@ -63,8 +63,8 @@ A simple space invaders game developed purely in Python
 
 * Free software: MIT license
 
-![alt text](https://github.com/pratikms/spacevader/blob/master/screenshots/GameInProgress.png?raw=true "Game in progress")
-![alt text](https://github.com/pratikms/spacevader/blob/master/screenshots/GameOver.png?raw=true "Game over")
+.. image:: https://github.com/pratikms/spacevader/blob/master/screenshots/GameInProgress.png?raw=true "Game in progress")
+.. image:: https://github.com/pratikms/spacevader/blob/master/screenshots/GameOver.png?raw=true "Game over")
 
 Installation
 ============
