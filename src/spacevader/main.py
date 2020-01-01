@@ -1,9 +1,11 @@
 import random
 import math
 import os
+import sys
 
 from pygame import mixer
 import pygame
+import psutil
 
 from spacevader.entities.constant import Constant
 from spacevader.entities.player import Player
@@ -67,19 +69,32 @@ def run():
         screen.blit(background, (0, 0))
         
         for event in pygame.event.get():
-            if event.type is pygame.QUIT:
+            if event.type == pygame.QUIT:
                 running = False
 
-            if event.type is pygame.KEYDOWN:
+            if event.type == pygame.KEYDOWN:
                 if event.key in (pygame.K_LEFT, pygame.K_RIGHT):
                     player.x_change = player.delta(event.type, event.key)
                 if event.key == pygame.K_SPACE and bullet.state == 'READY':
                     bullet.x = player.x
                     bullet.fire(sound=True)
 
-            if event.type is pygame.KEYUP:
+            if event.type == pygame.KEYUP:
                 if event.key in (pygame.K_LEFT, pygame.K_RIGHT):
                     player.x_change = player.delta(event.type, event.key)
+
+            if event.type == pygame.MOUSEBUTTONUP:
+                mouse = pygame.mouse.get_pos()
+                if Constant.RESTART_X + Constant.GAME_OVER_FONT_SIZE > mouse[0] > Constant.RESTART_X and Constant.RESTART_Y + Constant.GAME_OVER_FONT_SIZE > mouse[1] > Constant.RESTART_Y:
+                    try:
+                        proc = psutil.Process(os.getpid())
+                        for handler in proc.get_open_files() + proc.connections():
+                            os.close(handler.fd)
+                    except Exception as e:
+                        print(e)
+
+                    python = sys.executable
+                    os.execl(python, python, *sys.argv)
 
         player.x += player.x_change
 

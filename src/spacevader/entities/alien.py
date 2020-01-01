@@ -51,6 +51,9 @@ class Alien:
         game_over_text = game_over_font.render('GAME OVER', True, (255, 255, 255))
         screen.blit(game_over_text, (Constant.GAME_OVER_X, Constant.GAME_OVER_Y))
 
+        restart_icon = pygame.image.load(Constant.RESTART_ICON)
+        screen.blit(restart_icon, (Constant.RESTART_X, Constant.RESTART_Y))
+
     def has_collided(self, bullet):
         distance = math.sqrt(math.pow(self._x - bullet.x, 2) + math.pow(self._y - bullet.y, 2))
         return distance < Constant.COLLISION_DELTA

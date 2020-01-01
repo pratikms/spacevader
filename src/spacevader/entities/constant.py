@@ -31,11 +31,14 @@ class Constant:
 
     COLLISION_DELTA = 27
 
-    RESTART_ICON = os.path.join(f'{CURR_DIR}/../', 'icons/restart.png')
     GAME_OVER_FONT_SIZE = 64
     GAME_OVER_X = 200
     GAME_OVER_Y = 250
 
+    RESTART_ICON = os.path.join(f'{CURR_DIR}/../', 'icons/restart.png')
+    RESTART_X = 370
+    RESTART_Y = GAME_OVER_Y + GAME_OVER_FONT_SIZE + 15
+    
     BULLET_ICON = os.path.join(f'{CURR_DIR}/../', 'icons/bullet.png')
     BULLET_X_INITIAL = 0
     BULLET_Y_INITIAL = 480
