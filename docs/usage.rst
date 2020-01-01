@@ -2,6 +2,6 @@
 Usage
 =====
 
-To use spacevader in a project::
+To play spacevader, in the command line::
 
-	import spacevader
+	spacevader
