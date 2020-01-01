@@ -47,7 +47,7 @@ class Alien:
 
     @classmethod
     def game_over(cls, screen):
-        game_over_font = pygame.font.Font(Constant.GAME_OVER_FONT_TYPE, Constant.GAME_OVER_FONT_SIZE)
+        game_over_font = pygame.font.Font(Constant.FONT, Constant.GAME_OVER_FONT_SIZE)
         game_over_text = game_over_font.render('GAME OVER', True, (255, 255, 255))
         screen.blit(game_over_text, (Constant.GAME_OVER_X, Constant.GAME_OVER_Y))
 

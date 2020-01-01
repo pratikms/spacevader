@@ -4,9 +4,17 @@ class Constant:
 
     CURR_DIR = os.path.dirname(os.path.realpath(__file__))
 
+    GAME_NAME = 'Spacevader'
+    GAME_ICON = os.path.join(f'{CURR_DIR}/../', 'icons/ufo.png')
+
     LEFT_BOUNDARY = 0
     RIGHT_BOUNDARY = 736
     INVADE_BOUNDARY = 440
+
+    BACKGROUND_ICON = os.path.join(f'{CURR_DIR}/../', 'icons/background-2.jpg')
+    BACKGROUND_SOUND = os.path.join(f'{CURR_DIR}/../', 'sounds/background.wav')
+
+    FONT = 'freesansbold.ttf'
 
     PLAYER_ICON = os.path.join(f'{CURR_DIR}/../', 'icons/player.png')
     PLAYER_X_INITIAL = 370
@@ -23,7 +31,7 @@ class Constant:
 
     COLLISION_DELTA = 27
 
-    GAME_OVER_FONT_TYPE = 'freesansbold.ttf'
+    RESTART_ICON = os.path.join(f'{CURR_DIR}/../', 'icons/restart.png')
     GAME_OVER_FONT_SIZE = 64
     GAME_OVER_X = 200
     GAME_OVER_Y = 250

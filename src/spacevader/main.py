@@ -5,6 +5,7 @@ import os
 from pygame import mixer
 import pygame
 
+from spacevader.entities.constant import Constant
 from spacevader.entities.player import Player
 from spacevader.entities.alien import Alien
 from spacevader.entities.bullet import Bullet
@@ -19,22 +20,22 @@ screen = pygame.display.set_mode((800, 600))
 
 # Set background
 # TODO: Set dynamic background
-background = pygame.image.load(os.path.join(current_dir, 'icons/background-2.jpg'))
+background = pygame.image.load(Constant.BACKGROUND_ICON)
 
 # Load background sound
-mixer.music.load(os.path.join(current_dir, 'sounds/background.wav'))
+mixer.music.load(Constant.BACKGROUND_SOUND)
 mixer.music.play(-1)
 
 # Set the score
 score = 0
-font = pygame.font.Font('freesansbold.ttf', 32)
+font = pygame.font.Font(Constant.FONT, 32)
 
 score_board_x = 760
 score_board_y = 10
 
 # Set title and icon
-pygame.display.set_caption('Spacevader')
-icon = pygame.image.load(os.path.join(current_dir, 'icons/ufo.png'))
+pygame.display.set_caption(Constant.GAME_NAME)
+icon = pygame.image.load(Constant.GAME_ICON)
 pygame.display.set_icon(icon)
 
 # Player
