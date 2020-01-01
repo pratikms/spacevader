@@ -2,6 +2,10 @@
 Overview
 ========
 
+.. |br| raw:: html
+
+   <br />
+
 .. start-badges
 
 .. list-table::
@@ -63,8 +67,9 @@ A simple space invaders game developed purely in Python
 
 * Free software: MIT license
 
-.. image:: https://github.com/pratikms/spacevader/blob/master/screenshots/GameInProgress.png?raw=true "Game in progress")
-.. image:: https://github.com/pratikms/spacevader/blob/master/screenshots/GameOver.png?raw=true "Game over")
+.. image:: https://github.com/pratikms/spacevader/blob/master/screenshots/GameInProgress.png?raw=true
+|br|
+.. image:: https://github.com/pratikms/spacevader/blob/master/screenshots/GameOver.png?raw=true
 
 Installation
 ============
