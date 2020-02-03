@@ -20,7 +20,7 @@ class Constant:
     PLAYER_X_INITIAL = 370
     PLAYER_Y_INITIAL = 480
     PLAYER_X_CHANGE = 0
-    PLAYER_X_MOVEMENT_DELTA = 5
+    PLAYER_X_MOVEMENT_DELTA = 7
 
     ALIEN_ICON = os.path.join(f'{CURR_DIR}/../', 'icons/alien.png')
     ALIEN_X_MOVEMENT_DELTA = 4
@@ -43,6 +43,9 @@ class Constant:
     BULLET_X_INITIAL = 0
     BULLET_Y_INITIAL = 480
     BULLET_X_CHANGE = 0
-    BULLET_Y_CHANGE = 10
+    BULLET_Y_CHANGE = 20
     BULLET_SOUND = os.path.join(f'{CURR_DIR}/../', 'sounds/laser.wav')
+
+    SCORE_BOARD_X = 750
+    SCORE_BOARD_Y = 10
     

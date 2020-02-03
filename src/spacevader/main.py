@@ -3,6 +3,8 @@ import math
 import os
 import sys
 
+os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = 'True'
+
 from pygame import mixer
 import pygame
 import psutil
@@ -32,9 +34,6 @@ mixer.music.play(-1)
 score = 0
 font = pygame.font.Font(Constant.FONT, 32)
 
-score_board_x = 760
-score_board_y = 10
-
 # Set title and icon
 pygame.display.set_caption(Constant.GAME_NAME)
 icon = pygame.image.load(Constant.GAME_ICON)
@@ -49,9 +48,9 @@ aliens = []
 # Bullet
 bullet = Bullet(screen)
 
-def show_score(x, y):
+def show_score():
     score_value = font.render(f'{score}', True, (255, 255, 255))
-    screen.blit(score_value, (x, y))
+    screen.blit(score_value, (Constant.SCORE_BOARD_X, Constant.SCORE_BOARD_Y))
 
 def run():
     global player
@@ -129,7 +128,7 @@ def run():
             bullet.y -= bullet._y_change
 
         player.render()
-        show_score(score_board_x, score_board_y)
+        show_score()
         pygame.display.update()
 
 if __name__ == '__main__':

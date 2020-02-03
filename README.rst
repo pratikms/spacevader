@@ -51,9 +51,9 @@ Overview
     :alt: Supported implementations
     :target: https://pypi.org/project/spacevader
 
-.. |commits-since| image:: https://img.shields.io/github/commits-since/pratikms/spacevader/v0.0.3.svg
+.. |commits-since| image:: https://img.shields.io/github/commits-since/pratikms/spacevader/v0.0.4.svg
     :alt: Commits since latest release
-    :target: https://github.com/pratikms/spacevader/compare/v0.0.3...master
+    :target: https://github.com/pratikms/spacevader/compare/v0.0.4...master
 
 
 

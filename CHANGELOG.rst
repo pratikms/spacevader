@@ -2,6 +2,13 @@
 Changelog
 =========
 
+0.0.4 (2020-02-03)
+------------------
+
+* Increase player speed
+* Increase bullet speed
+* Refactoring
+
 0.0.3 (2020-01-02)
 ------------------
 
