@@ -74,7 +74,7 @@ setup(
     install_requires=[
         # eg: 'aspectlib==1.1.1', 'six>=1.7',
         'pygame==1.9.6',
-        'psutil==5.6.7'
+        'psutil==5.7.2'
     ],
     extras_require={
         # eg:
